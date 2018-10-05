@@ -46,6 +46,16 @@ public final class Attendee extends EmailAddress {
    * The last response time.
    */
   private Date lastResponseTime;
+  
+  /**
+   * The last response time.
+   */
+  private Date proposedStart;
+  
+  /**
+   * The last response time.
+   */
+  private Date proposedEnd;
 
   /**
    * Initializes a new instance of the Attendee class.
@@ -114,6 +124,24 @@ public final class Attendee extends EmailAddress {
   public Date getLastResponseTime() {
     return lastResponseTime;
   }
+  
+  /**
+   * Gets the last response time.
+   *
+   * @return the last response time
+   */
+  public Date getProposedStart() {
+    return proposedStart;
+  }
+  
+  /**
+   * Gets the last response time.
+   *
+   * @return the last response time
+   */
+  public Date getProposedEnd() {
+    return proposedEnd;
+  }
 
   /**
    * Tries to read element from XML.
@@ -136,7 +164,16 @@ public final class Attendee extends EmailAddress {
         XmlElementNames.LastResponseTime)) {
       this.lastResponseTime = reader.readElementValueAsDateTime();
       return true;
-    } else {
+    } else if (reader.getLocalName().equalsIgnoreCase(
+            XmlElementNames.ProposedStart)) {
+      this.proposedStart = reader.readElementValueAsDateTime();
+      return true;
+    } else if (reader.getLocalName().equalsIgnoreCase(
+            XmlElementNames.ProposedEnd)) {
+      this.proposedEnd = reader.readElementValueAsDateTime();
+      return true;
+        }
+    else {
       return super.tryReadElementFromXml(reader);
     }
   }

@@ -4784,5 +4784,14 @@ public class XmlElementNames {
 
   // by
   // UM
+  
+  /**
+   * The Constant ProposedStart.
+   */
+  public static final String ProposedStart = "ProposedStart";
+  /**
+   * The Constant ProposedEnd.
+   */
+  public static final String ProposedEnd = "ProposedEnd";
 
 }
